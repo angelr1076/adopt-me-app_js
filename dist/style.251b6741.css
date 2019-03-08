@@ -1,0 +1,23 @@
+:root {
+  --main-bg-color: rgb(53, 46, 46) !important;
+  --secondary-bg-color: rgb(87, 74, 74) !important;
+  --main-font-color: rgb(221, 199, 199);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  color: rgb(175, 170, 170);
+}
+
+.card,
+.list-group-item,
+.form-control {
+  background-color: var(--secondary-bg-color) !important;
+  color: var(--main-font-color) !important;
+}
