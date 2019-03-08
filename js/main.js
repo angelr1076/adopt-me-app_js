@@ -1,5 +1,5 @@
 import fetchJsonp from "fetch-jsonp";
-import { isValidZip, showAlert } from "./validate";
+import { isTrueZip, showAlert } from "./verify";
 
 const petForm = document.querySelector("#pet-form");
 
@@ -16,7 +16,7 @@ function fetchAnimals(e) {
   console.log(sex);
 
   // Validate Zip
-  if (!isValidZip(zip)) {
+  if (!isTrueZip(zip)) {
     showAlert("Please enter a valid zip code.", "danger");
     return;
   }
@@ -34,6 +34,7 @@ function fetchAnimals(e) {
 }
 // then(data => console.log(data.petfinder.pets.pet))
 const callback = data => {
+  // Log data
   console.log(data);
 };
 
@@ -55,13 +56,14 @@ const showAnimals = pets => {
               .$t
               ? `${pet.media.photos.photo[2].$t}`
               : `Photo unavailable`}">
-            <p>${pet.shelterPetId.$t
+            <p class="mt-3">${pet.shelterPetId.$t
               ? `Pet ID: ${pet.shelterPetId.$t}`
               : `Pet ID unavaiable`}</p>
           </div>
           <div class="col-sm-6">
-            <h4 class="text-primary">${pet.name.$t} (${pet.age.$t})</h4>
-            <h4 ml-3>${pet.breeds.breed.$t
+            <h4 class="text-primary text-center">${pet.name.$t} (${pet.age
+      .$t})</h4>
+            <h4 class="text-center ml-3">${pet.breeds.breed.$t
               ? `${pet.breeds.breed.$t}`
               : `<h4 class="text-seconary">Breed unavailable</h4>`}</h4>
             <ul class="list-group">

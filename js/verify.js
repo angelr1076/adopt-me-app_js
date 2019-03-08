@@ -1,5 +1,5 @@
 // Validate zipcode
-export const isValidZip = zip => {
+export const isTrueZip = zip => {
   return /^\d{5}(-\d{4})?$/.test(zip);
 };
 

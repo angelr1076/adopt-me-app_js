@@ -230,21 +230,21 @@ var global = arguments[3];
 
   module.exports = fetchJsonp;
 });
-},{}],"js/validate.js":[function(require,module,exports) {
+},{}],"js/verify.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.showAlert = exports.isValidZip = void 0;
+exports.showAlert = exports.isTrueZip = void 0;
 
 // Validate zipcode
-var isValidZip = function isValidZip(zip) {
+var isTrueZip = function isTrueZip(zip) {
   return /^\d{5}(-\d{4})?$/.test(zip);
 }; // Display Alert Message
 
 
-exports.isValidZip = isValidZip;
+exports.isTrueZip = isTrueZip;
 
 var showAlert = function showAlert(message, className) {
   var div = document.createElement("div");
@@ -265,7 +265,7 @@ exports.showAlert = showAlert;
 
 var _fetchJsonp = _interopRequireDefault(require("fetch-jsonp"));
 
-var _validate = require("./validate");
+var _verify = require("./verify");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -280,8 +280,8 @@ function fetchAnimals(e) {
   var sex = document.querySelector("#sex").value;
   console.log(sex); // Validate Zip
 
-  if (!(0, _validate.isValidZip)(zip)) {
-    (0, _validate.showAlert)("Please enter a valid zip code.", "danger");
+  if (!(0, _verify.isTrueZip)(zip)) {
+    (0, _verify.showAlert)("Please enter a valid zip code.", "danger");
     return;
   } // Fetch Pets
 
@@ -299,6 +299,7 @@ function fetchAnimals(e) {
 
 
 var callback = function callback(data) {
+  // Log data
   console.log(data);
 }; // Show Listings of Pets
 
@@ -312,11 +313,11 @@ var showAnimals = function showAnimals(pets) {
     console.log(pet);
     var div = document.createElement("div");
     div.classList.add("card", "card-body", "mb-3");
-    div.innerHTML = "\n        <div class=\"row\">\n          <div class=\"col-sm-6 text-center\">\n            <img class=\"img-fluid rounded mt-2\" src=\"".concat(pet.media.photos.photo[2].$t ? "".concat(pet.media.photos.photo[2].$t) : "Photo unavailable", "\">\n            <p>").concat(pet.shelterPetId.$t ? "Pet ID: ".concat(pet.shelterPetId.$t) : "Pet ID unavaiable", "</p>\n          </div>\n          <div class=\"col-sm-6\">\n            <h4 class=\"text-primary\">").concat(pet.name.$t, " (").concat(pet.age.$t, ")</h4>\n            <h4 ml-3>").concat(pet.breeds.breed.$t ? "".concat(pet.breeds.breed.$t) : "<h4 class=\"text-seconary\">Breed unavailable</h4>", "</h4>\n            <ul class=\"list-group\">\n            <li class=\"list-group-item\">Gender: ").concat(pet.sex.$t ? "".concat(pet.sex.$t) : "", "</li>\n            <li class=\"list-group-item\">").concat(pet.contact.address1.$t ? "".concat(pet.contact.address1.$t) : "Address unavailable", " \n              <li class=\"list-group-item\">").concat(pet.contact.city.$t, " ").concat(pet.contact.state.$t, " ").concat(pet.contact.zip.$t, "</li>  \n          ").concat(pet.contact.phone.$t ? "<li class=\"list-group-item\">Phone:".concat(pet.contact.phone.$t, "</li>") : "<li class=\"list-group-item\">Phone no. unavailable</li>", "\n          ").concat(pet.contact.email.$t ? "<li class=\"list-group-item\">Email: ".concat(pet.contact.email.$t, "</li>") : "<li class=\"list-group-item\">Email unavailable</li>", "\n            <li class=\"list-group-item\">Shelter ID: ").concat(pet.shelterId.$t, "</li>\n            </ul>\n          </div> \n        </div>\n    ");
+    div.innerHTML = "\n        <div class=\"row\">\n          <div class=\"col-sm-6 text-center\">\n            <img class=\"img-fluid rounded mt-2\" src=\"".concat(pet.media.photos.photo[2].$t ? "".concat(pet.media.photos.photo[2].$t) : "Photo unavailable", "\">\n            <p class=\"mt-3\">").concat(pet.shelterPetId.$t ? "Pet ID: ".concat(pet.shelterPetId.$t) : "Pet ID unavaiable", "</p>\n          </div>\n          <div class=\"col-sm-6\">\n            <h4 class=\"text-primary text-center\">").concat(pet.name.$t, " (").concat(pet.age.$t, ")</h4>\n            <h4 class=\"text-center ml-3\">").concat(pet.breeds.breed.$t ? "".concat(pet.breeds.breed.$t) : "<h4 class=\"text-seconary\">Breed unavailable</h4>", "</h4>\n            <ul class=\"list-group\">\n            <li class=\"list-group-item\">Gender: ").concat(pet.sex.$t ? "".concat(pet.sex.$t) : "", "</li>\n            <li class=\"list-group-item\">").concat(pet.contact.address1.$t ? "".concat(pet.contact.address1.$t) : "Address unavailable", " \n              <li class=\"list-group-item\">").concat(pet.contact.city.$t, " ").concat(pet.contact.state.$t, " ").concat(pet.contact.zip.$t, "</li>  \n          ").concat(pet.contact.phone.$t ? "<li class=\"list-group-item\">Phone:".concat(pet.contact.phone.$t, "</li>") : "<li class=\"list-group-item\">Phone no. unavailable</li>", "\n          ").concat(pet.contact.email.$t ? "<li class=\"list-group-item\">Email: ".concat(pet.contact.email.$t, "</li>") : "<li class=\"list-group-item\">Email unavailable</li>", "\n            <li class=\"list-group-item\">Shelter ID: ").concat(pet.shelterId.$t, "</li>\n            </ul>\n          </div> \n        </div>\n    ");
     results.appendChild(div);
   });
 };
-},{"fetch-jsonp":"node_modules/fetch-jsonp/build/fetch-jsonp.js","./validate":"js/validate.js"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"fetch-jsonp":"node_modules/fetch-jsonp/build/fetch-jsonp.js","./verify":"js/verify.js"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -343,7 +344,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59831" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49529" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
