@@ -236,16 +236,17 @@ var global = arguments[3];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isValidZip = isValidZip;
-exports.showAlert = showAlert;
+exports.showAlert = exports.isValidZip = void 0;
 
 // Validate zipcode
-function isValidZip(zip) {
+var isValidZip = function isValidZip(zip) {
   return /^\d{5}(-\d{4})?$/.test(zip);
-} // Display Alert Message
+}; // Display Alert Message
 
 
-function showAlert(message, className) {
+exports.isValidZip = isValidZip;
+
+var showAlert = function showAlert(message, className) {
   var div = document.createElement("div");
   div.className = "alert alert-".concat(className);
   div.appendChild(document.createTextNode(message)); // Get container
@@ -256,7 +257,9 @@ function showAlert(message, className) {
   setTimeout(function () {
     document.querySelector(".alert").remove();
   }, 3000);
-}
+};
+
+exports.showAlert = showAlert;
 },{}],"js/main.js":[function(require,module,exports) {
 "use strict";
 
@@ -295,12 +298,12 @@ function fetchAnimals(e) {
 } // then(data => console.log(data.petfinder.pets.pet))
 
 
-function callback(data) {
+var callback = function callback(data) {
   console.log(data);
-} // Show Listings of Pets
+}; // Show Listings of Pets
 
 
-function showAnimals(pets) {
+var showAnimals = function showAnimals(pets) {
   var results = document.querySelector("#results"); // Clear first
 
   results.innerHTML = ""; // Loops through pets
@@ -309,10 +312,10 @@ function showAnimals(pets) {
     console.log(pet);
     var div = document.createElement("div");
     div.classList.add("card", "card-body", "mb-3");
-    div.innerHTML = "\n        <div class=\"row\">\n        <div class=\"col-sm-6 text-center\">\n               <img class=\"img-fluid rounded mt-2\" src=\"".concat(pet.media.photos.photo[2].$t ? "".concat(pet.media.photos.photo[2].$t) : "Photo unavailable", "\">\n            <p>").concat(pet.shelterPetId.$t ? "Pet ID: ".concat(pet.shelterPetId.$t) : "Pet ID unavaiable", "</p>\n            </div>\n            <div class=\"col-sm-6\">\n            <h4 class=\"text-primary\">").concat(pet.name.$t, " (").concat(pet.age.$t, ")</h4>\n\n            <h4 ml-3>").concat(pet.breeds.breed.$t ? "".concat(pet.breeds.breed.$t) : "<h4 class=\"text-seconary\">Breed unavailable</h4>", "</h4>\n\n            <ul class=\"list-group\">\n            <li class=\"list-group-item\">Gender: ").concat(pet.sex.$t ? "".concat(pet.sex.$t) : "", "</li>\n            <li class=\"list-group-item\">").concat(pet.contact.address1.$t ? "".concat(pet.contact.address1.$t) : "Address unavailable", " \n              <li class=\"list-group-item\">").concat(pet.contact.city.$t, " ").concat(pet.contact.state.$t, " ").concat(pet.contact.zip.$t, "</li>  \n              ").concat(pet.contact.phone.$t ? "<li class=\"list-group-item\">Phone:".concat(pet.contact.phone.$t, "</li>") : "<li class=\"list-group-item\">Phone no. unavailable</li>", "\n              ").concat(pet.contact.email.$t ? "<li class=\"list-group-item\">Email: ".concat(pet.contact.email.$t, "</li>") : "<li class=\"list-group-item\">Email unavailable</li>", "\n                <li class=\"list-group-item\">Shelter ID: ").concat(pet.shelterId.$t, "</li>\n                </ul>\n            </div>\n            \n        </div>\n    ");
+    div.innerHTML = "\n        <div class=\"row\">\n          <div class=\"col-sm-6 text-center\">\n            <img class=\"img-fluid rounded mt-2\" src=\"".concat(pet.media.photos.photo[2].$t ? "".concat(pet.media.photos.photo[2].$t) : "Photo unavailable", "\">\n            <p>").concat(pet.shelterPetId.$t ? "Pet ID: ".concat(pet.shelterPetId.$t) : "Pet ID unavaiable", "</p>\n          </div>\n          <div class=\"col-sm-6\">\n            <h4 class=\"text-primary\">").concat(pet.name.$t, " (").concat(pet.age.$t, ")</h4>\n            <h4 ml-3>").concat(pet.breeds.breed.$t ? "".concat(pet.breeds.breed.$t) : "<h4 class=\"text-seconary\">Breed unavailable</h4>", "</h4>\n            <ul class=\"list-group\">\n            <li class=\"list-group-item\">Gender: ").concat(pet.sex.$t ? "".concat(pet.sex.$t) : "", "</li>\n            <li class=\"list-group-item\">").concat(pet.contact.address1.$t ? "".concat(pet.contact.address1.$t) : "Address unavailable", " \n              <li class=\"list-group-item\">").concat(pet.contact.city.$t, " ").concat(pet.contact.state.$t, " ").concat(pet.contact.zip.$t, "</li>  \n          ").concat(pet.contact.phone.$t ? "<li class=\"list-group-item\">Phone:".concat(pet.contact.phone.$t, "</li>") : "<li class=\"list-group-item\">Phone no. unavailable</li>", "\n          ").concat(pet.contact.email.$t ? "<li class=\"list-group-item\">Email: ".concat(pet.contact.email.$t, "</li>") : "<li class=\"list-group-item\">Email unavailable</li>", "\n            <li class=\"list-group-item\">Shelter ID: ").concat(pet.shelterId.$t, "</li>\n            </ul>\n          </div> \n        </div>\n    ");
     results.appendChild(div);
   });
-}
+};
 },{"fetch-jsonp":"node_modules/fetch-jsonp/build/fetch-jsonp.js","./validate":"js/validate.js"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -340,7 +343,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59644" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59831" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

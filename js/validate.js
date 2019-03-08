@@ -1,10 +1,10 @@
 // Validate zipcode
-export function isValidZip(zip) {
+export const isValidZip = zip => {
   return /^\d{5}(-\d{4})?$/.test(zip);
-}
+};
 
 // Display Alert Message
-export function showAlert(message, className) {
+export const showAlert = (message, className) => {
   const div = document.createElement("div");
   div.className = `alert alert-${className}`;
   div.appendChild(document.createTextNode(message));
@@ -16,4 +16,4 @@ export function showAlert(message, className) {
   setTimeout(() => {
     document.querySelector(".alert").remove();
   }, 3000);
-}
+};
