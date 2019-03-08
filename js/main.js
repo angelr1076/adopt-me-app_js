@@ -63,9 +63,9 @@ const showAnimals = pets => {
           <div class="col-sm-6">
             <h4 class="text-primary text-center">${pet.name.$t} (${pet.age
       .$t})</h4>
-            <h4 class="text-center ml-3">${pet.breeds.breed.$t
+            <h4 class="text-center ml-3"></h4>${pet.breeds.breed.$t
               ? `${pet.breeds.breed.$t}`
-              : `<h4 class="text-seconary">Breed unavailable</h4>`}</h4>
+              : `<h4 class="text-seconary text-center">Breed unavailable</h4>`}</h4>
             <ul class="list-group">
             <li class="list-group-item">Gender: ${pet.sex.$t
               ? `${pet.sex.$t}`
