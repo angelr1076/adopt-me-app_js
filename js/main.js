@@ -17,7 +17,7 @@ function fetchAnimals(e) {
 
   // Validate Zip
   if (!isTrueZip(zip)) {
-    showAlert("Please enter a valid zip code.", "danger");
+    showAlert("Please enter a valid zip code.", "warning");
     return;
   }
 

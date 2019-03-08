@@ -1,7 +1,5 @@
 // Validate zipcode
-export const isTrueZip = zip => {
-  return /^\d{5}(-\d{4})?$/.test(zip);
-};
+export const isTrueZip = zip => /^\d{5}(-\d{4})?$/.test(zip);
 
 // Display Alert Message
 export const showAlert = (message, className) => {
